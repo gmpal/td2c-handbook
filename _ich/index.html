@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interaktive Übungen zur deutschen Grammatik mit Schwierigkeitsstufen von A1 bis B2."
+    />
+    <title>Deutsche Grammatikübungen</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+    <header class="site-header">
+      <div class="brand">
+        <h1>Deutsche Grammatikübungen</h1>
+        <p class="subtitle">
+          Trainiere Fälle, Verbkonjugationen, Artikel, Präpositionen und mehr.
+        </p>
+      </div>
+
+      <nav class="primary-nav" aria-label="Navigation">
+        <div class="nav-group">
+          <h2>Übungstypen</h2>
+          <ul>
+            <li><button type="button" data-exercise-type="cases">Fälle</button></li>
+            <li>
+              <button type="button" data-exercise-type="verb-conjugations">
+                Verbkonjugation
+              </button>
+            </li>
+            <li><button type="button" data-exercise-type="articles">Artikel</button></li>
+            <li>
+              <button type="button" data-exercise-type="prepositions">
+                Präpositionen
+              </button>
+            </li>
+            <li><button type="button" data-exercise-type="adjectives">Adjektive</button></li>
+            <li><button type="button" data-exercise-type="syntax">Satzbau</button></li>
+          </ul>
+        </div>
+
+        <div class="nav-group">
+          <h2>Niveau</h2>
+          <ul class="level-selector">
+            <li><button type="button" data-level="A1">A1</button></li>
+            <li><button type="button" data-level="A2">A2</button></li>
+            <li><button type="button" data-level="B1">B1</button></li>
+            <li><button type="button" data-level="B2">B2</button></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="progress-section" aria-label="Lernfortschritt">
+        <div class="progress-header">
+          <h2>Dein Fortschritt</h2>
+          <p>Verfolge deine Entwicklung pro Übung und Niveau.</p>
+        </div>
+        <div class="progress-cards" role="list">
+          <article class="progress-card" role="listitem">
+            <h3>Gesamtfortschritt</h3>
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span class="progress-bar__fill" style="width: 0%;"></span>
+            </div>
+            <p class="progress-meta">0% abgeschlossen</p>
+          </article>
+          <article class="progress-card" role="listitem">
+            <h3>Aktuelle Serie</h3>
+            <p class="progress-value">0 Tage</p>
+            <p class="progress-meta">Bleib täglich dran.</p>
+          </article>
+          <article class="progress-card" role="listitem">
+            <h3>Letzte Übung</h3>
+            <p class="progress-value">Noch keine</p>
+            <p class="progress-meta">Starte deine erste Einheit.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="exercise-layout" aria-label="Übungen">
+        <aside class="exercise-sidebar" aria-label="Übungsinformationen">
+          <div class="exercise-summary">
+            <h2>Ausgewählte Übung</h2>
+            <p class="exercise-title">Bitte Übung wählen</p>
+            <p class="exercise-level">Niveau: <span data-current-level>—</span></p>
+            <p class="exercise-type">Typ: <span data-current-type>—</span></p>
+          </div>
+          <div class="exercise-actions">
+            <button type="button" class="primary-action" data-action="start">
+              Übung starten
+            </button>
+            <button type="button" class="secondary-action" data-action="reset">
+              Auswahl zurücksetzen
+            </button>
+          </div>
+          <div class="exercise-help">
+            <h3>Hinweise</h3>
+            <ul>
+              <li>Wähle zuerst Niveau und Übungstyp.</li>
+              <li>Erhalte Feedback zu jeder Antwort.</li>
+              <li>Nutze die Hinweise, wenn du nicht weiterkommst.</li>
+            </ul>
+          </div>
+        </aside>
+
+        <section class="exercise-container" aria-live="polite">
+          <header class="exercise-header">
+            <h2>Übungsbereich</h2>
+            <p class="exercise-description">
+              Dieser Bereich lädt dynamisch die ausgewählten Übungen.
+            </p>
+          </header>
+
+          <div class="exercise-stage" data-exercise-stage>
+            <article class="exercise-card" data-exercise-card>
+              <h3>Bereit für den Start?</h3>
+              <p>Wähle eine Übung links aus, um zu beginnen.</p>
+              <form class="exercise-form" data-exercise-form>
+                <label for="exercise-input">Antwort</label>
+                <input
+                  id="exercise-input"
+                  name="answer"
+                  type="text"
+                  placeholder="Antwort eingeben"
+                  autocomplete="off"
+                />
+                <div class="exercise-controls">
+                  <button type="submit" class="primary-action" data-action="submit">
+                    Prüfen
+                  </button>
+                  <button type="button" class="secondary-action" data-action="hint">
+                    Hinweis
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <footer class="exercise-footer">
+            <div class="exercise-meta">
+              <span data-question-index>0</span> / <span data-question-total>0</span>
+            </div>
+            <div class="exercise-meta">
+              <span data-correct-count>0</span> richtig ·
+              <span data-incorrect-count>0</span> falsch
+            </div>
+          </footer>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="feedback-modal" data-feedback-modal aria-labelledby="feedback-title">
+      <form method="dialog" class="feedback-content">
+        <header>
+          <h2 id="feedback-title">Feedback</h2>
+          <p data-feedback-status>Bereit für deine nächste Antwort.</p>
+        </header>
+        <section class="feedback-body">
+          <p data-feedback-message>
+            Wähle eine Übung aus, um Feedback zu erhalten.
+          </p>
+        </section>
+        <footer class="feedback-actions">
+          <button type="submit" class="primary-action">Weiter</button>
+          <button type="button" class="secondary-action" data-action="close-modal">
+            Schließen
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="hint-modal" data-hint-modal aria-labelledby="hint-title">
+      <form method="dialog" class="hint-content">
+        <header>
+          <h2 id="hint-title">Hinweis</h2>
+        </header>
+        <section class="hint-body">
+          <p data-hint-message>Hier erscheint ein Hinweis zur aktuellen Aufgabe.</p>
+        </section>
+        <footer class="hint-actions">
+          <button type="submit" class="primary-action">Verstanden</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <script id="exercise-data" type="application/json">
+      {
+        "levels": ["A1", "A2", "B1", "B2"],
+        "exerciseTypes": [
+          "cases",
+          "verb-conjugations",
+          "articles",
+          "prepositions",
+          "adjectives",
+          "syntax"
+        ],
+        "exercises": {
+          "cases": [
+            {
+              "id": "cases-a1-001",
+              "level": "A1",
+              "prompt": "Wähle den richtigen Fall: Ich sehe ___ Hund.",
+              "choices": ["den", "dem", "des"],
+              "answer": "den",
+              "hint": "Akkusativ nach 'sehen'.",
+              "explanation": "Direktes Objekt → Akkusativ."
+            }
+          ],
+          "verb-conjugations": [
+            {
+              "id": "verbs-a1-001",
+              "level": "A1",
+              "prompt": "Konjugiere 'sein': Ich ___ müde.",
+              "answer": "bin",
+              "hint": "1. Person Singular im Präsens.",
+              "explanation": "Ich bin."
+            }
+          ],
+          "articles": [
+            {
+              "id": "articles-a1-001",
+              "level": "A1",
+              "prompt": "Wähle den richtigen Artikel: ___ Haus ist groß.",
+              "choices": ["Der", "Die", "Das"],
+              "answer": "Das",
+              "hint": "Neutrum.",
+              "explanation": "Das Haus."
+            }
+          ],
+          "prepositions": [
+            {
+              "id": "prep-a2-001",
+              "level": "A2",
+              "prompt": "Wähle die richtige Präposition: Ich komme ___ Berlin.",
+              "choices": ["aus", "nach", "bei"],
+              "answer": "aus",
+              "hint": "Herkunft.",
+              "explanation": "Aus + Dativ."
+            }
+          ],
+          "adjectives": [
+            {
+              "id": "adj-b1-001",
+              "level": "B1",
+              "prompt": "Ergänze: Ich habe einen ___ Hund.",
+              "answer": "kleinen",
+              "hint": "Akkusativ maskulin mit unbestimmtem Artikel.",
+              "explanation": "einen kleinen Hund"
+            }
+          ],
+          "syntax": [
+            {
+              "id": "syntax-b2-001",
+              "level": "B2",
+              "prompt": "Ordne die Wörter: (heute / wir / im Park / treffen / uns)",
+              "answer": "Wir treffen uns heute im Park.",
+              "hint": "Verb an zweiter Stelle.",
+              "explanation": "Satzstruktur: Subjekt + Verb + Reflexivpronomen + Zeit + Ort."
+            }
+          ]
+        }
+      }
+    </script>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
